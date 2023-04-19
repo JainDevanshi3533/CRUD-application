@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 import {Button, FormControl, FormGroup, Input, InputLabel, Typography} from '@mui/material';
 import { useState } from "react";
+import {addUser} from '../service/api';
 
 const Container = styled(FormGroup)`
     width:50%;
@@ -18,6 +19,7 @@ const defaultValue = {
     email:'',
     phone:''
 }
+
 const AddUser = () =>{
     const [user, setUser] = useState(defaultValue);
     const onValueChange = (e)=> {
@@ -27,8 +29,8 @@ const AddUser = () =>{
         // console.log(user);
     }
 
-    const addUserDetails = () =>{
-        
+    const addUserDetails = async() =>{
+        await addUser(user);
     }
     return(
         <Container>
